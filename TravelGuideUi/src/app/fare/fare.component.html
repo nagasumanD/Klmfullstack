@@ -1,0 +1,97 @@
+<section id="hero" class="align-items-center justify-content-center mt-10">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="card" style="width: 55rem;">
+        <div class="text-center m-5" *ngIf="spinner">
+          <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="!spinner">
+          <h5 class="card-title"><b>Fare Estimater</b></h5>
+          <hr color="orange" />
+          <h6 class="card-subtitle mb-2 text-muted"></h6>
+          <form #airtravelform="ngForm" class="">
+            <div class="row">
+              <div class="col-6">
+                <div class="origin">
+                  <label for="origin" class="inputLabel"><b>Origin : </b></label>
+                  <input class="form-control inputborder" *ngIf="!orginSelected" type="text" name="originFilter"
+                    (keyup)="filterAirports($event)" #origin="ngModel" [(ngModel)]="originInput" required
+                    placeholder="type to filter origin">
+                  <div class="selectedAirport" *ngIf="orginSelected">
+                    <app-airport-view [airport]="orginSelected" [show]="false" [remove]="true"
+                      (onClose)="onDeleteOrigin($event)"></app-airport-view>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="destination" *ngIf="orginSelected">
+                  <label for="origin" class="inputLabel"><b>Destination : </b></label>
+                  <input class="form-control inputborder" *ngIf="!destinationSelected" type="text"
+                    name="destinationFilter" (keyup)="filterAirports($event)" #destination="ngModel"
+                    [(ngModel)]="destinationInput" required placeholder="type to filter Destination">
+                  <div class="selectedAirport" *ngIf="destinationSelected">
+                    <app-airport-view [airport]="destinationSelected" [show]="false" [remove]="true"
+                      (onClose)="onDeleteDestination($event)"></app-airport-view>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row secondRow">
+              <div class="col-4">
+                <p style="float: left;"> <b>Preferred currency :</b> </p>
+                <input id="EUR" class="m-1 p-1" type="radio" value="EUR" name="currenyRadio" [(ngModel)]="currenyRadio"
+                  checked>
+                <label for="EUR" class="mr-1">EUR</label>
+                <input id="USD" type="radio" class="m-1 p-1" value="USD" name="currenyRadio" [(ngModel)]="currenyRadio">
+                <label for="USD">USD</label>
+              </div>
+              <div class="col-4">
+                <p style="float: left;"> <b>Select Language :</b> </p>
+                <input id="EN" class="m-1 p-1" type="radio" value="en" name="languageRadio" [(ngModel)]="languageRadio"
+                  checked (change)="hangleLanguageChange($event)">
+                <label for="EN" class="mr-1">EN</label>
+
+                <input id="Nl" type="radio" class="m-1 p-1" value="nl" name="languageRadio" [(ngModel)]="languageRadio"
+                  (change)="hangleLanguageChange($event)">
+                <label for="Nl">Nl</label>
+              </div>
+              <div class="col-4">
+                <button class="btn" [disabled]="sbtDisable" (click)="getFare()">Get Fare</button>
+              </div>
+            </div>
+            <div class="fare" *ngIf="showFare">
+              <hr color="orange" />
+              <div class="row">
+                <div class="col-7"></div>
+                <div class="col-5">
+                  <p class="offered-fare"><b> Total Fare offered : {{fare|currency:fareCurrency}}</b></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="airportsview">
+  <div class="container">
+    <div class="row" *ngIf="!destinationSelected || !orginSelected">
+      <div class="col-4" *ngFor="let airport of airportsList ; trackBy:trackByAriportId">
+        <app-airport-view trackby="trackbycode" [airport]="airport" [show]="false" (click)="selectedAirport(airport)">
+        </app-airport-view>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pagination">
+  <div class="container">
+    <div class="row" class="pagination-box" *ngIf="!destinationSelected || !orginSelected">
+      <app-pagination [totalPages]="pageLength" (onChangePageClick)="onPageChange($event)"></app-pagination>
+    </div>
+  </div>
+</div>

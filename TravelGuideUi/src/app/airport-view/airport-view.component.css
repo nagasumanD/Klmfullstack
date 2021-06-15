@@ -1,0 +1,12 @@
+.icon {
+  position: absolute;
+  left: 0;
+  top: -15px;
+  cursor: pointer;
+}
+
+.valori {
+  position: relative;
+  top: -5px;
+  left: 8px;
+}

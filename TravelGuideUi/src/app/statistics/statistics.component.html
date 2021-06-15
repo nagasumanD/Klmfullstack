@@ -1,0 +1,103 @@
+<section id="hero" style="height:100%;" class="align-items-center justify-content-center">
+  <div class="container" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="card" style="width: 30rem;">
+        <div class="text-center m-5" *ngIf="spinner">
+          <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="!spinner">
+          <h5 class="card-title"><b>Request Statistics </b></h5>
+          <hr color="orange" />
+          <div class="container-fluid mt-0">
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Total Number of Request
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.totalRequest}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Total Number of 200 Request
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.requestOk}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Total Number of 400 Request
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.request4xx}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Total Number of 500 Request
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.request5xx}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Average time of Response
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.averageRespTime}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Minimum Response Time
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.minResptime}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <p class="airportData">
+                  Maximum Response Time
+                </p>
+              </div>
+              <div class="col-4">
+                <span style="float: left;">:</span>
+                <P style="float: right;">{{logData.maxResptime}}</P>
+              </div>
+              <hr color="orange" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

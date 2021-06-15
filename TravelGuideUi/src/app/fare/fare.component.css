@@ -1,0 +1,63 @@
+#hero {
+  margin-top: 30px;
+  width: 100%;
+  background-size: cover;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .container {
+  position: relative;
+  padding-top: 74px;
+  text-align: center;
+}
+hr {
+  color: orange;
+}
+
+.inputborder {
+  border-bottom-color: orange;
+  border-top-color: white;
+  border-left-color: white;
+  border-right-color: white;
+  border-radius: 0;
+}
+
+.formstyle {
+  margin-top: 4px;
+}
+.btn {
+  border-color: orange;
+}
+
+.airportData {
+  text-align: left;
+}
+.inputLabel {
+  float: left;
+}
+.airportsview {
+  cursor: pointer;
+  margin-top: 16px;
+}
+.secondRow {
+  margin-top: 16px;
+}
+.offered-fare {
+  float: right;
+}
+.pagination-box {
+  float: right;
+}
+.selectedAirport {
+  position: relative;
+  margin-left: 4px;
+}
